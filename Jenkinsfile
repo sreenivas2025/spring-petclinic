@@ -33,25 +33,14 @@ pipeline {
                 }
             }
         } 
-       // stage("CodeScanning"){
-           // environment {
-              // SONAR_HOME = tool name: 'sonar-scan'
-           // }
-            //steps {
-               // withSonarQubeEnv('SonarServer') {
-              
-                    //sh "${SONAR_HOME}/bin/sonar-scanner"
-                //}
-           // }
-
-       // }
-      //stage("QualityGate"){
-        //steps{
-           // timeout(tine:5,unit:'MINUTES'){
-                //WaitForQualityGate abort pipeline:true
-            //}
-       // }
-     // } 
+       
+      stage("QualityGate"){
+        steps{
+            timeout(tine:5,unit:'MINUTES'){
+                WaitForQualityGate abort pipeline:true
+            }
+        }
+      } 
     }
 }
                 
